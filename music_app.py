@@ -4,9 +4,6 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from scipy.spatial.distance import cdist
 import plotly.express as px
-import plotly as plt
-import seaborn as sns
-
 
 
 # Load your data
