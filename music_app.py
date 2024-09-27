@@ -72,9 +72,8 @@ standard_scaler = StandardScaler()
 scaled_normalized_data = standard_scaler.fit_transform(normalized_data)
 
 # Streamlit app
-st.title('Music Recommender')
-
-st.header('Music Recommender Prompt')
+st.title("Welcome to the Streamlit Demo Application")
+st.header("by Divya")
 
 # Input for song names (use st.text_input or st.text_area)
 song_names = st.text_area("Enter song names (one per line):")
