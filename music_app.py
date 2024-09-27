@@ -5,6 +5,7 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from scipy.spatial.distance import cdist
 import plotly.express as px
 import plotly as plt
+import seaborn as sns
 
 
 
@@ -132,14 +133,20 @@ st.plotly_chart(fig_popularity)
 #decade_counts = data['release_decade'].value_counts().sort_index()
 
 # Display the number of songs per decade
-#st.subheader('Number of Songs per Decade')
-#data['decade'] = ((data['year'] - 1)//10)*10
-#plt.figure(figsize=(12,6))
-#sns.countplot(x='decade', data=data)
-#plt.title('Number of songs each decade')
-#st.plt.show()
 
-#st.plotly_chart(fig_decades)
+data['release_decade'] = ((data['year']) // 10) * 10
+
+# Count the number of songs per decade
+decade_counts = data['release_decade'].value_counts().sort_index()
+
+# Display the number of songs per decade
+st.subheader('Number of Songs per Decade')
+fig_decades = px.bar(x=decade_counts.index, y=decade_counts.values,
+                     labels={'x': 'Decade', 'y': 'Number of Songs'},
+                     title='Number of Songs per Decade', color=decade_counts.values)
+fig_decades.update_layout(xaxis_type='category', height=1000, width=1000)
+st.plotly_chart(fig_decades)
+
 
 # Display the distribution of song attributes using a histogram
 st.subheader('Distribution of Song Attributes')
